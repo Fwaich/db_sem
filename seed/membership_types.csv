@@ -1,7 +1,11 @@
 type_id,name,duration_days,price
-1,Месячный,30,2900.00
-2,Дневной на месяц,30,2100.00
-3,На три месяца,90,7400.00
-4,Дневной на три месяца,90,5500.00
-5,На полгода,180,13200.00
-6,Годовой,365,22900.00
+1,Single Visit,1,600.00
+2,Monthly Basic,30,2900.00
+3,Quarterly Standard,90,7400.00
+4,Annual Unlimited,365,22900.00
+5,Morning / Off-Peak,30,2100.00
+6,Weekend Pass,30,1800.00
+7,10-Visit Pack,90,4000.00
+8,Group Classes Plus,30,3900.00
+9,VIP All-Inclusive,365,34900.00
+10,Student Plan,30,1900.00

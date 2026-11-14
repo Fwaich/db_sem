@@ -25,16 +25,16 @@ END
 $check$;
 
 \copy public.membership_types (type_id, name, duration_days, price) FROM 'seed/membership_types.csv' WITH (FORMAT csv, HEADER true, ENCODING 'UTF8')
-\copy public.memberships (membership_id, type_id, start_date, end_date, price) FROM 'seed/memberships.csv' WITH (FORMAT csv, HEADER true, ENCODING 'UTF8')
-\copy public.clients (client_id, membership_id, full_name, phone, email, birth_date, current_balance) FROM 'seed/clients.csv' WITH (FORMAT csv, HEADER true, ENCODING 'UTF8')
-\copy public.balance_history (history_id, client_id, change_amount, balance_after, operation_type, operation_date) FROM 'seed/balance_history.csv' WITH (FORMAT csv, HEADER true, ENCODING 'UTF8')
-\copy public.payments (payment_id, history_id, amount, payment_date, method) FROM 'seed/payments.csv' WITH (FORMAT csv, HEADER true, ENCODING 'UTF8')
-\copy public.trainers (trainer_id, full_name, specialization, phone) FROM 'seed/trainers.csv' WITH (FORMAT csv, HEADER true, ENCODING 'UTF8')
+\copy public.clients (client_id, full_name, phone, email, birth_date, current_balance, created_at) FROM 'seed/clients.csv' WITH (FORMAT csv, HEADER true, ENCODING 'UTF8')
+\copy public.memberships (membership_id, client_id, type_id, start_date, end_date, price, created_at) FROM 'seed/memberships.csv' WITH (FORMAT csv, HEADER true, ENCODING 'UTF8')
+\copy public.balance_history (history_id, client_id, change_amount, balance_after, operation_type, operation_date, created_at) FROM 'seed/balance_history.csv' WITH (FORMAT csv, HEADER true, ENCODING 'UTF8')
+\copy public.payments (payment_id, history_id, amount, payment_date, method, created_at) FROM 'seed/payments.csv' WITH (FORMAT csv, HEADER true, ENCODING 'UTF8')
+\copy public.trainers (trainer_id, full_name, specialization, phone, created_at) FROM 'seed/trainers.csv' WITH (FORMAT csv, HEADER true, ENCODING 'UTF8')
 \copy public.gym_rooms (room_id, name, capacity) FROM 'seed/gym_rooms.csv' WITH (FORMAT csv, HEADER true, ENCODING 'UTF8')
-\copy public.schedule (schedule_id, name, day_of_week, start_time, end_time, trainer_id, room_id) FROM 'seed/schedule.csv' WITH (FORMAT csv, HEADER true, ENCODING 'UTF8')
-\copy public.trainings (training_id, schedule_id, training_date) FROM 'seed/trainings.csv' WITH (FORMAT csv, HEADER true, ENCODING 'UTF8')
+\copy public.schedule (schedule_id, name, day_of_week, start_time, end_time, trainer_id, room_id, created_at, updated_at) FROM 'seed/schedule.csv' WITH (FORMAT csv, HEADER true, ENCODING 'UTF8')
+\copy public.trainings (training_id, schedule_id, training_date, created_at) FROM 'seed/trainings.csv' WITH (FORMAT csv, HEADER true, ENCODING 'UTF8')
 \copy public.client_trainings (client_id, training_id, status) FROM 'seed/client_trainings.csv' WITH (FORMAT csv, HEADER true, ENCODING 'UTF8')
-\copy public.visits (visit_id, client_id, room_id, visit_date) FROM 'seed/visits.csv' WITH (FORMAT csv, HEADER true, ENCODING 'UTF8')
+\copy public.visits (visit_id, client_id, room_id, visit_date, created_at) FROM 'seed/visits.csv' WITH (FORMAT csv, HEADER true, ENCODING 'UTF8')
 
 -- Explicit IDs loaded by COPY do not advance their sequences.
 DO $sequences$
